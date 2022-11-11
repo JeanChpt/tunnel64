@@ -3,19 +3,10 @@
   remote_user: root
   tasks:
 
-  # Installation de echo
-  - name: Installer echo
-    package:
-      name: inetutils-inetd
-      state: present
-
-  # Configuration de echo
-  - name: Configuration de echo
-    shell: update-inetd --add "echo stream tcp6 nowait nobody internal" && service inetutils-inetd start
-
   # Suppression de la passerelle par défaut
   - name: Suppression de la passerelle par défaut
     shell: ip route del default || true
+    ignore_errors: true
 
   # Configuration de la première interface
   - name: Configuration de VM3/eth1

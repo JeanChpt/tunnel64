@@ -6,6 +6,7 @@
   # Suppression de la passerelle par défaut
   - name: Suppression de la passerelle par défaut
     shell: ip route del default || true
+    ignore_errors: true
 
   # Configuration de la première interface
   - name: Configuration de VM1/eth1

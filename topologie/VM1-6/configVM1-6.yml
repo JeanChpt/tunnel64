@@ -3,13 +3,6 @@
   remote_user: root
   tasks:
 
-  # Activation du drapeau de routage IPv6
-  - name: Activation du routage IPv6
-    sysctl:
-      name: net.ipv6.conf.all.forwarding
-      value: '1'
-      sysctl_set: yes
-
   # Suppression de la passerelle par défaut
   - name: Suppression de la passerelle par défaut
     shell: ip route del default || true
@@ -23,31 +16,17 @@
       ifname: eth1
       state: present
       autoconnect: true
-      method6: auto
-
-  # Configuration de la deuxième interface
-  - name: Configuration de VM1-6/eth2
-    nmcli:
-      type: ethernet
-      conn_name: eth2 via ansible
-      ifname: eth2
-      state: present
-      autoconnect: true
       ip6: fc00:1234:3::16/64
 
-  # Route vers les autres sous réseaux IPv6
-  - name: Configuration de la route vers LAN2-6 via VM2-6
+  # Route vers les autres sous réseaux
+  - name: Configuration de la passerelle par défaut
     community.general.nmcli:
       type: ethernet
       conn_name: eth1 via ansible
       ifname: eth1
-      routes6: fc00:1234::/32 fc00:1234:1::26
+      routes6: default fc00:1234:1::26
       state: present
 
   # Activation de la première interface
   - name: Activation explicite de cette configuration
     shell: nmcli con up "eth1 via ansible"
-
-  # Activation de la deuxième interface
-  - name: Activation explicite de cette configuration
-    shell: nmcli con up "eth2 via ansible"
