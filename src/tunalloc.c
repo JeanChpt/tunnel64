@@ -10,7 +10,6 @@
 #include <linux/if.h>
 #include <linux/if_tun.h>
 
-
 int tun_alloc(char *dev)
 {
   struct ifreq ifr;
@@ -44,10 +43,10 @@ int main (int argc, char** argv){
   int tunfd;
   printf("Création de %s\n",argv[1]);
   tunfd = tun_alloc(argv[1]);
-  printf("fd = %d\n",  tunfd);
   printf("Faire la configuration de %s...\n",argv[1]);
   printf("Appuyez sur une touche pour continuer\n");
   getchar();
+  system("../scripts/configure-tun.sh");
   printf("Interface %s Configurée:\n",argv[1]);
   system("ip addr");
   printf("Appuyez sur une touche pour terminer\n");
