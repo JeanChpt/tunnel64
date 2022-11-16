@@ -1,2 +1,8 @@
+# Le répertoire contenant les exécutables
 bin
+
+# Le répertoire contenant les objets lors de la compilation
 obj
+
+# Fichiers propres à Vagrant
+topologie/VM*/.vagrant
