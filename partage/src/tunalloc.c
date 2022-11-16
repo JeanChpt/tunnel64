@@ -46,10 +46,10 @@ int main (int argc, char** argv){
   printf("Faire la configuration de %s...\n",argv[1]);
   printf("Appuyez sur une touche pour continuer\n");
   getchar();
-  system("/bin/bash ./configure-tun.sh");
+  system("/bin/bash ../scripts/configure-tun.sh");
   printf("Interface %s Configurée:\n",argv[1]);
   system("ip addr");
-
+/*
   FILE* interface = fdopen(tunfd,"r");
   if (interface == NULL){
     perror("Erreur de lecture sur l'interface : tun0");
@@ -66,7 +66,7 @@ int main (int argc, char** argv){
     fclose(interface);
     printf("Ce qui est récupéré de l'interface tun0 : \n%s\n",buffer);
   }
-
+*/
   printf("Appuyez sur une touche pour terminer\n");
   getchar();
 
