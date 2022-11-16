@@ -8,7 +8,7 @@
     shell: ip route del default || true
     ignore_errors: true
 
-  # Configuration de la deuxième interface
+  # Configuration de la première interface
   - name: Configuration de VM3-6/eth1
     nmcli:
       type: ethernet
@@ -19,12 +19,12 @@
       ip6: fc00:1234:4::36/64
 
   # Route vers les autres sous réseaux
-  - name: Configuration de la route vers LAN2-6 via VM2-6
+  - name: Configuration de la passerelle par défaut
     community.general.nmcli:
       type: ethernet
       conn_name: eth1 via ansible
       ifname: eth1
-      routes6: default fc00:1234:4::3
+      routes6: ::/0 fc00:1234:4::3
       state: present
 
   # Activation de la première interface

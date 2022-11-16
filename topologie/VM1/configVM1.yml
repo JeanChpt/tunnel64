@@ -37,15 +37,6 @@
       routes4: 172.16.2.160/28 172.16.2.132
       state: present
 
-  # Route vers les autres sous réseaux IPv6
-  - name: Configuration de la route vers LAN1-6/LAN2-6/LAN4-6 via VM3-6
-    community.general.nmcli:
-      type: ethernet
-      conn_name: eth2 via ansible
-      ifname: eth2
-      routes6: fc00:1234::/32 fc00:1234:3::16
-      state: present
-
   # Activation de la première interface
   - name: Activation explicite de cette configuration
     shell: nmcli con up "eth1 via ansible"
