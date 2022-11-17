@@ -12,7 +12,7 @@
  */
 void extin(int t)
 {
-    char *hote = "172.16.2.132"; // Nom d'hôte du serveur (IP)
+    char *hote = "172.16.2.163"; // Nom d'hôte du serveur (IP)
     char *port = "123";          // Port d'écoute du serveur
     char ip[NI_MAXHOST];         // Adresse IPv4 en notation pointée
     struct addrinfo *resol;      // Structure pour la résolution de nom
@@ -21,7 +21,7 @@ void extin(int t)
     // Résolution de l'hôte
     if (getaddrinfo(hote, port, NULL, &resol) < 0)
     {
-        perror("résolution adresse");
+        perror("Résolution adresse");
         exit(2);
     }
 
@@ -40,7 +40,7 @@ void extin(int t)
     fprintf(stderr, "Essai de connexion à %s (%s) sur le port %s\n\n", hote, ip, port);
     if (connect(s, resol->ai_addr, sizeof(struct sockaddr_in)) < 0)
     {
-        perror("connexion");
+        perror("Connexion");
         exit(4);
     }
     // Libération mémoire
@@ -57,9 +57,8 @@ void extin(int t)
 /**
  * Fonction qui permet de rediriger le flux de la socket vers tun0
  */
-void extout()
+void extout(int t)
 {
-    printf("Coucou c'est moi");
     int s, n;                                         // Descripteurs de socket
     int len, on;                                      // Utilitaires divers
     struct addrinfo *resol;                           // Résolution
@@ -136,5 +135,5 @@ void extout()
     }
 
     // Redirection vers la sortie standard
-    transfert(n, 1);
+    transfert(n, t);
 }

@@ -28,7 +28,7 @@ int main (int argc, char** argv){
         if (atoi(argv[2]) == 1){
             extin(tunfd);
         } else if (atoi(argv[2]) == 2){
-            extout();
+            extout(tunfd);
         }
         printf("Appuyez sur une touche pour terminer\n");
         getchar();

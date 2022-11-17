@@ -1,0 +1,39 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    fc00:1234:3::16       fc00:1234:ffff::10    ICMPv6   104    Echo (ping) request id=0xe458, seq=45, hop limit=63 (no response found!)
+
+Frame 1: 104 bytes on wire (832 bits), 104 bytes captured (832 bits) on interface tun0, id 0
+Raw packet data
+Internet Protocol Version 6, Src: fc00:1234:3::16, Dst: fc00:1234:ffff::10
+Internet Control Message Protocol v6
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 1.024144600    fc00:1234:3::16       fc00:1234:ffff::10    ICMPv6   104    Echo (ping) request id=0xe458, seq=46, hop limit=63 (no response found!)
+
+Frame 2: 104 bytes on wire (832 bits), 104 bytes captured (832 bits) on interface tun0, id 0
+Raw packet data
+Internet Protocol Version 6, Src: fc00:1234:3::16, Dst: fc00:1234:ffff::10
+Internet Control Message Protocol v6
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 2.048248176    fc00:1234:3::16       fc00:1234:ffff::10    ICMPv6   104    Echo (ping) request id=0xe458, seq=47, hop limit=63 (no response found!)
+
+Frame 3: 104 bytes on wire (832 bits), 104 bytes captured (832 bits) on interface tun0, id 0
+Raw packet data
+Internet Protocol Version 6, Src: fc00:1234:3::16, Dst: fc00:1234:ffff::10
+Internet Control Message Protocol v6
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 3.072322801    fc00:1234:3::16       fc00:1234:ffff::10    ICMPv6   104    Echo (ping) request id=0xe458, seq=48, hop limit=63 (no response found!)
+
+Frame 4: 104 bytes on wire (832 bits), 104 bytes captured (832 bits) on interface tun0, id 0
+Raw packet data
+Internet Protocol Version 6, Src: fc00:1234:3::16, Dst: fc00:1234:ffff::10
+Internet Control Message Protocol v6
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 4.096496033    fc00:1234:3::16       fc00:1234:ffff::10    ICMPv6   104    Echo (ping) request id=0xe458, seq=49, hop limit=63 (no response found!)
+
+Frame 5: 104 bytes on wire (832 bits), 104 bytes captured (832 bits) on interface tun0, id 0
+Raw packet data
+Internet Protocol Version 6, Src: fc00:1234:3::16, Dst: fc00:1234:ffff::10
+Internet Control Message Protocol v6
