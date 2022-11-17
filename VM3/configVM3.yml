@@ -8,6 +8,13 @@
     shell: ip route del default || true
     ignore_errors: true
 
+    # Activation du drapeau de routage IPv6
+  - name: Activation du routage IPv6
+    sysctl:
+      name: net.ipv6.conf.all.forwarding
+      value: '1'
+      sysctl_set: yes
+
   # Configuration de la première interface
   - name: Configuration de VM3/eth1
     nmcli:
