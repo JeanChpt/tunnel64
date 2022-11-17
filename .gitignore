@@ -6,3 +6,6 @@ partage/obj
 
 # Fichiers propres à Vagrant
 VM*/.vagrant
+
+# Fichiers propres à vscode
+.vscode
