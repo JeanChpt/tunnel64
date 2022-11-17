@@ -12,7 +12,7 @@
  */
 void extin(int t)
 {
-    char *hote = "172.16.2.163"; // Nom d'hôte du serveur (IP)
+    char *hote = "172.16.2.132"; // Nom d'hôte du serveur (IP)
     char *port = "123";          // Port d'écoute du serveur
     char ip[NI_MAXHOST];         // Adresse IPv4 en notation pointée
     struct addrinfo *resol;      // Structure pour la résolution de nom
@@ -52,7 +52,6 @@ void extin(int t)
     close(s);
 
     fprintf(stderr, "Fin de la session.\n");
-    return EXIT_SUCCESS;
 }
 
 /**
@@ -60,6 +59,7 @@ void extin(int t)
  */
 void extout()
 {
+    printf("Coucou c'est moi");
     int s, n;                                         // Descripteurs de socket
     int len, on;                                      // Utilitaires divers
     struct addrinfo *resol;                           // Résolution
@@ -137,5 +137,4 @@ void extout()
 
     // Redirection vers la sortie standard
     transfert(n, 1);
-    return EXIT_SUCCESS;
 }

@@ -4,6 +4,7 @@
 
 // Includes
 #include "iftun.h"
+#include "extremite.h"
 
 /**
  * Fonction principale du programme tunnel64
@@ -11,9 +12,9 @@
  * @param argv Les arguments d'appel du programme
 */
 int main (int argc, char** argv){
-    /*if (!argv[1]){
+    if (!argv[1]){
         printf("Utilisation : ./tunnel64 ___ <- nom de l'interface (ex. \"tun0\"\n");
-    } else {*/
+    } else {
         int tunfd;
         printf("Création de %s\n",argv[1]);
         tunfd = tun_alloc(argv[1]);
@@ -23,10 +24,15 @@ int main (int argc, char** argv){
         system("/bin/bash ./scripts/configure-tun.sh");
         printf("Interface %s Configurée:\n",argv[1]);
         system("ip addr");
-        transfert(tunfd, 1);
+        printf("Args : %d", argc);
+        if (atoi(argv[2]) == 1){
+            extin(tunfd);
+        } else if (atoi(argv[2]) == 2){
+            extout();
+        }
         printf("Appuyez sur une touche pour terminer\n");
         getchar();
-    //}  
+    }
 
   return 0;
 }
