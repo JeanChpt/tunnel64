@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[scale=.8]{geometry}
 \usepackage[french]{babel}
-\usepackage{graphics}
+\usepackage{graphicx}
 
 \title{Tunnel IPv6 sur IPv4}
 
@@ -17,15 +17,17 @@
     \newpage
 
     \section{Configuration réseau}
+    $$\includegraphics[scale=0.6]{images/topologie.png}$$
+    \\
     Pour démarrer, on s'intéresse à la réalisation du réseau de 5 machines
-    proposé dans l'énoncé du sujet. Pour cela, on reprend notre configuration
-    du TP précédent en y apportant quelques modifications. Premièrement, on
-    supprime la configuration de la deuxième interface dans les fichiers de 
-    configuration ansible sur les machines VM1.6 et VM3.6 car ces machines
-    n'en auront plus la nécessité. (Cela n'est pas nécessaire pour le bon
-    fonctionnement mais ça permet de faire un peu de propre). On supprime de 
-    plus les routes devenues obsolètes permettant auparavant le passage par 
-    VM2.6 pour la communication en IPv6.
+    proposé dans l'énoncé du sujet dont le schéma se trouve juste au dessus. 
+    Pour cela, on reprend notre configuration du TP précédent en y apportant 
+    quelques modifications. Premièrement, on supprime la configuration de la 
+    deuxième interface dans les fichiers de configuration ansible sur les 
+    machines VM1.6 et VM3.6 car ces machines n'en auront plus la nécessité. 
+    (Cela n'est pas nécessaire pour le bon fonctionnement mais ça permet de 
+    faire un peu de propre). On supprime de plus les routes devenues obsolètes 
+    permettant auparavant le passage par VM2.6 pour la communication en IPv6.
 
     \section{Interface TUN}
     Une fois notre configuration terminée avec ansible, on s'intéresse 
@@ -117,8 +119,9 @@
     virtuelle. On peut utiliser les flags suivants: IFF\_TUN, IFF\_TAP et
     IFF\_NO\_PI. IFF\_TUN est celui que l'on utilise car il permet de 
     supprimer les en-têtes Ethernet afin de ne garder que le datagramme IP.
-    IFF\_NO\_PI permet de ne conserver que les données en retirant toutes 
-    les informations.
+    IFF\_NO\_PI permet de retirer les 4 octets concernant la version du 
+    protocole de couche IP. Le flag IFF\_NO\_PI peut s'ajouter en plus du 
+    flag IFF\_TUN, les flags sont cumulables.
 
     \section{Un tunnel simple pour IPv6}
 
@@ -159,5 +162,13 @@
     standard.
 
     \subsection{Redirection du traffic sortant}
+
+    Maintenant qu'il est possible pour nous d'afficher le contenu du tunnel
+    sur la sortie standard de VM3, on veut pouvoir le rediriger son interface
+    virtuelle tun0. Cela aura pour but de réintégrer le datagramme IPv6
+    transporté par le tunnel sur IPv4 dans le réseau IPv6. Pour cela il suffit
+    de modifier la fonction extout de la bibliothèque extremite en effectuant
+    un transfert non plus vers 1 (sortie standars) mais vers le descripteur de
+    fichier retourné par tun0.
 
 \end{document}
