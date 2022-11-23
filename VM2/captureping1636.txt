@@ -1,0 +1,591 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 1: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000452293    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=109 Win=508 Len=0 TSval=3850688490 TSecr=3863518939
+
+Frame 2: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 109, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.001035021    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 3: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.012446784    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=109 Win=508 Len=0 TSval=3863518940 TSecr=3850688491
+
+Frame 4: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 109, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 1.013027755    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 5: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 109, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 1.013356484    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=217 Win=508 Len=0 TSval=3850689503 TSecr=3863519951
+
+Frame 6: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 217, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 1.013944502    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 7: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 109, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 1.014135873    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=217 Win=508 Len=0 TSval=3863519953 TSecr=3850689504
+
+Frame 8: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 217, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 2.013837767    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 9: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 217, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 2.014123776    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=325 Win=508 Len=0 TSval=3850690504 TSecr=3863520953
+
+Frame 10: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 325, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 2.014630390    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 11: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 217, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 2.014800711    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=325 Win=508 Len=0 TSval=3863520954 TSecr=3850690504
+
+Frame 12: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 325, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 3.015406752    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 13: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 325, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     14 3.015690637    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=433 Win=508 Len=0 TSval=3850691505 TSecr=3863521954
+
+Frame 14: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 433, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     15 3.016146476    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 15: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 325, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     16 3.016313480    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=433 Win=508 Len=0 TSval=3863521955 TSecr=3850691506
+
+Frame 16: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 433, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     17 4.017013556    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 17: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 433, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     18 4.017304094    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=541 Win=508 Len=0 TSval=3850692507 TSecr=3863522956
+
+Frame 18: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 541, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     19 4.017949740    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 19: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 433, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     20 4.018145469    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=541 Win=508 Len=0 TSval=3863522957 TSecr=3850692508
+
+Frame 20: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 541, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     21 5.018780683    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 21: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 541, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     22 5.019127036    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=649 Win=508 Len=0 TSval=3850693509 TSecr=3863523958
+
+Frame 22: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 649, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     23 5.019680849    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 23: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 541, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     24 5.019858825    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=649 Win=508 Len=0 TSval=3863523959 TSecr=3850693509
+
+Frame 24: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 649, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     25 5.202871148    PcsCompu_e6:5f:e6     PcsCompu_a4:2c:b8     ARP      42     Who has 172.16.2.131? Tell 172.16.2.132
+
+Frame 25: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+     26 5.203215847    PcsCompu_a4:2c:b8     PcsCompu_e6:5f:e6     ARP      60     172.16.2.131 is at 08:00:27:a4:2c:b8
+
+Frame 26: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Address Resolution Protocol (reply)
+
+No.     Time           Source                Destination           Protocol Length Info
+     27 6.020640184    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 27: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 649, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     28 6.021011293    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=757 Win=508 Len=0 TSval=3850694511 TSecr=3863524959
+
+Frame 28: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 757, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     29 6.021551291    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 29: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 649, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     30 6.021691936    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=757 Win=508 Len=0 TSval=3863524961 TSecr=3850694511
+
+Frame 30: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 757, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     31 7.022315158    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 31: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 757, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     32 7.022665027    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=865 Win=508 Len=0 TSval=3850695512 TSecr=3863525961
+
+Frame 32: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 865, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     33 7.023176672    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 33: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 757, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     34 7.023262313    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=865 Win=508 Len=0 TSval=3863525962 TSecr=3850695513
+
+Frame 34: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 865, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     35 8.024066769    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 35: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 865, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     36 8.024380080    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=973 Win=508 Len=0 TSval=3850696514 TSecr=3863526963
+
+Frame 36: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 973, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     37 8.024924185    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 37: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 865, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     38 8.025115085    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=973 Win=508 Len=0 TSval=3863526964 TSecr=3850696515
+
+Frame 38: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 973, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     39 9.026050434    172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 39: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 973, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     40 9.026426362    172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1081 Win=508 Len=0 TSval=3850697516 TSecr=3863527965
+
+Frame 40: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1081, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     41 9.027162289    172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 41: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 973, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     42 9.027347578    172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1081 Win=508 Len=0 TSval=3863527966 TSecr=3850697517
+
+Frame 42: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1081, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     43 11.905939838   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 43: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1081, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     44 11.906241697   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1189 Win=508 Len=0 TSval=3863530845 TSecr=3850700396
+
+Frame 44: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1189, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     45 11.906692296   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 45: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1081, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     46 11.906977173   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1189 Win=508 Len=0 TSval=3850700397 TSecr=3863530846
+
+Frame 46: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1189, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     47 12.907788438   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 47: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1189, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     48 12.908161602   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1297 Win=508 Len=0 TSval=3863531847 TSecr=3850701398
+
+Frame 48: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1297, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     49 12.908770469   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 49: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1189, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     50 12.909065325   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1297 Win=508 Len=0 TSval=3850701399 TSecr=3863531848
+
+Frame 50: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1297, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     51 13.908946018   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 51: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1297, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     52 13.909260972   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1405 Win=508 Len=0 TSval=3863532848 TSecr=3850702399
+
+Frame 52: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1405, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     53 13.909711350   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 53: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1297, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     54 13.909963796   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1405 Win=508 Len=0 TSval=3850702400 TSecr=3863532849
+
+Frame 54: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1405, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     55 14.910859978   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 55: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1405, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     56 14.911161026   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1513 Win=508 Len=0 TSval=3863533850 TSecr=3850703401
+
+Frame 56: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1513, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     57 14.911590845   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 57: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1405, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     58 14.911811802   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1513 Win=508 Len=0 TSval=3850703402 TSecr=3863533851
+
+Frame 58: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1513, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     59 15.912732420   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 59: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1513, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     60 15.913022878   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1621 Win=508 Len=0 TSval=3863534852 TSecr=3850704403
+
+Frame 60: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1621, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     61 15.913452828   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 61: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1513, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     62 15.913662603   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1621 Win=508 Len=0 TSval=3850704404 TSecr=3863534853
+
+Frame 62: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1621, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     63 16.914551586   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 63: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1621, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     64 16.914883671   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1729 Win=508 Len=0 TSval=3863535854 TSecr=3850705405
+
+Frame 64: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1729, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     65 16.915324532   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 65: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1621, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     66 16.915581817   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1729 Win=508 Len=0 TSval=3850705406 TSecr=3863535855
+
+Frame 66: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1729, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     67 17.916415632   172.16.2.163          172.16.2.131          NTP      174    reserved, reserved
+
+Frame 67: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 43468, Dst Port: 123, Seq: 1729, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     68 17.916738781   172.16.2.131          172.16.2.163          TCP      66     123 → 43468 [ACK] Seq=1 Ack=1837 Win=508 Len=0 TSval=3863536856 TSecr=3850706406
+
+Frame 68: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 123, Dst Port: 43468, Seq: 1, Ack: 1837, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     69 17.917218545   172.16.2.131          172.16.2.163          NTP      174    reserved, reserved
+
+Frame 69: 174 bytes on wire (1392 bits), 174 bytes captured (1392 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8), Dst: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6)
+Internet Protocol Version 4, Src: 172.16.2.131, Dst: 172.16.2.163
+Transmission Control Protocol, Src Port: 52454, Dst Port: 123, Seq: 1729, Ack: 1, Len: 108
+Network Time Protocol (reserved, reserved)
+
+No.     Time           Source                Destination           Protocol Length Info
+     70 17.917411870   172.16.2.163          172.16.2.131          TCP      66     123 → 52454 [ACK] Seq=1 Ack=1837 Win=508 Len=0 TSval=3850706408 TSecr=3863536857
+
+Frame 70: 66 bytes on wire (528 bits), 66 bytes captured (528 bits) on interface eth1, id 0
+Ethernet II, Src: PcsCompu_e6:5f:e6 (08:00:27:e6:5f:e6), Dst: PcsCompu_a4:2c:b8 (08:00:27:a4:2c:b8)
+Internet Protocol Version 4, Src: 172.16.2.163, Dst: 172.16.2.131
+Transmission Control Protocol, Src Port: 123, Dst Port: 52454, Seq: 1, Ack: 1837, Len: 0
