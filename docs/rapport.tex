@@ -17,8 +17,9 @@
     \newpage
 
     \section{Configuration réseau}
-    $$\includegraphics[scale=0.6]{images/topologie.png}$$
-    \\
+    
+    $$\includegraphics[scale=0.6]{images/topologie.png}$$ \\
+    
     Pour démarrer, on s'intéresse à la réalisation du réseau de 5 machines
     proposé dans l'énoncé du sujet dont le schéma se trouve juste au dessus. 
     Pour cela, on reprend notre configuration du TP précédent en y apportant 
@@ -42,9 +43,7 @@
     fonction principale main. Lorsque l'on regarde d'un peu plus près la 
     fonction tun\_alloc, on remarque que lors de son appel elle retourne
     un entier. Il s'agit du descripteur de fichier permettant la lecture
-    ou bien l'écriture sur cette interface.
-
-    \medbreak{}
+    ou bien l'écriture sur cette interface. \\
 
     On crée donc une bibliothèque \textit{iftun}, c'est-à-dire un fichier
     d'en-tête iftun.h et un fichier source iftun.c afin d'y ajouter la fonction
@@ -58,17 +57,13 @@
     les configurations créées au TP précédent car dans notre cas certaines 
     routes ne sont plus valides. Par exemple pour VM1 et VM1.6, dans le cas où
     ces machines voudraient communiquer avec VM3.6, elles ne pourront plus 
-    passer par VM2.6.
-
-    \medbreak{}
+    passer par VM2.6. \\
 
     On crée donc un script \textit{configure\_tun.sh} qui contiendra la commande
     \textit{ip address add fc00:1234:ffff::1/64 dev tun0}. Cela ne suffit pas 
     car lorsque l'interface TUN est créée, elle est désactivée. Pour l'activer 
     on rajoute une ligne de plus dans le script avec la commande \textit{ip 
-    link set dev tun0 up}. La configuration est maintenant terminée.
-
-    \medbreak{}
+    link set dev tun0 up}. La configuration est maintenant terminée. \\
 
     Afin de tester notre configuration et après avoir lancé notre programme de 
     test sur VM1, on tente d'effectuer un \textit{ping6} de VM1.6 vers 
@@ -80,9 +75,7 @@
     VM1.6) elle est désencapsulée afin de regarder qui est le destinataire pour
     pouvoir lui transmettre dans une nouvelle trame. Voyant que le destinataire
     est en réalité lui-même, le routeur VM1 peut traiter la demande et envoyer 
-    sa réponse. Cela se déroule dans l'espace noyau.
-
-    \medbreak{}
+    sa réponse. Cela se déroule dans l'espace noyau. \\
 
     On effectue ensuite le test en faisant \textit{ping6} depuis VM1 vers
     l'addresse \textit{fc00:1234:ffff::10}. Cette fois-ci le ping ne reçoit 
@@ -100,9 +93,7 @@
     s'intéresser à la récupération des informations dans tun0. On complète
     donc notre bibliothèque iftun avec une nouvelle fonction transfert qui
     permettra de transférer les données lues sur un descripteur de fichier
-    source vers un descripteur de fichier destination.
-
-    \medbreak{}
+    source vers un descripteur de fichier destination. \\
 
     On effectue donc le test de cette fonction avec comme descripteur de 
     fichier source celui retourné par la création de l'interface tun0 et
@@ -111,9 +102,7 @@
     depuis VM1.6. Au niveau du réseau rien ne change, Les captures sont 
     identiques. Cependant, on observe les paquets entrants sur tun0 s'afficher
     dans le terminal. Attention à bien filtrer l'affichage avec 
-    \textit{hexdump} afin de rendre cela plus lisible.
-
-    \medbreak{}
+    \textit{hexdump} afin de rendre cela plus lisible. \\
 
     Différentes options sont disponibles lorsque l'on crée l'interface 
     virtuelle. On peut utiliser les flags suivants: IFF\_TUN, IFF\_TAP et
@@ -139,9 +128,7 @@
     distante sur sa socket, on peut simplement effectuer un appel à notre 
     fonction transfert de la bibliothèque iftun. Celle-ci prend deux 
     descripteurs de fichiers en paramètres, le premier étant celui retourné par
-    tun0 et le deuxième la socket en elle-même.
-
-    \medbreak{}
+    tun0 et le deuxième la socket en elle-même. \\
 
     En plus de la fonction extin, il nous faut aussi une fonction extout qui 
     sera chargée du rôle de serveur et qui écoutera donc sur sa socket afin de 
@@ -150,9 +137,7 @@
     redirection est ici aussi effectuée à l'aide de la fonction transfert de la
     bibliothèque iftun. À terme le transfert ne s'effectuera plus vers la sortie 
     standard mais bien sur le descripteur de fichier de tun0 afin de réinjecter
-    notre datagramme IPv6 dans le réseau.
-
-    \medbreak{}
+    notre datagramme IPv6 dans le réseau. \\
 
     Lorque tout est  mis en place, c'est à dire que le programme de test est
     lancé en mode client sur VM1 et en mode serveur sur VM3, on peut effectuer 
@@ -168,7 +153,19 @@
     virtuelle tun0. Cela aura pour but de réintégrer le datagramme IPv6
     transporté par le tunnel sur IPv4 dans le réseau IPv6. Pour cela il suffit
     de modifier la fonction extout de la bibliothèque extremite en effectuant
-    un transfert non plus vers 1 (sortie standars) mais vers le descripteur de
-    fichier retourné par tun0.
+    un transfert non plus vers 1 (sortie standard) mais vers le descripteur de
+    fichier retourné par tun0. \\
+
+    De cette manière les datagrammes IPv6 qui étaient transportés par un 
+    datagramme IPv4 dans le tunnel sont réintégrés dans un réseau IPv6 à la 
+    sortie de celui-ci. Cela permet à la machine VM3.6 de recevoir le ping 
+    provenant de VM1.6
+
+    \subsection{Intégration finale du tunnel}
+    \subsection{Mise en place du tunnel entre VM1 et VM3: Schémas}
+
+    $$\includegraphics[scale=0.6]{images/schema_reseau.jpg}$$ \\
+
+    \subsection{Mise en place du tunnel entre VM1 et VM3: Système}
 
 \end{document}
