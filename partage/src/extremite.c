@@ -10,10 +10,8 @@
  * Fonction qui permet de rediriger le flux de tun0 vers la socket
  * @param t Descripteur de fichier de l'interface tun0
  */
-void extin(int t)
+void ext_in(int t, char* hote, char* port)
 {
-    char *hote = "172.16.2.163"; // Nom d'hôte du serveur (IP)
-    char *port = "123";          // Port d'écoute du serveur
     char ip[NI_MAXHOST];         // Adresse IPv4 en notation pointée
     struct addrinfo *resol;      // Structure pour la résolution de nom
     int s;                       // Descripteur de socket
@@ -37,7 +35,7 @@ void extin(int t)
     fprintf(stderr, "Le n° de la socket est : %i\n", s);
 
     // Connexion au serveur
-    fprintf(stderr, "Essai de connexion à %s (%s) sur le port %s\n\n", hote, ip, port);
+    // fprintf(stderr, "Essai de connexion à %s (%s) sur le port %s\n\n", hote, ip, port);
     if (connect(s, resol->ai_addr, sizeof(struct sockaddr_in)) < 0)
     {
         perror("Connexion");
@@ -51,13 +49,13 @@ void extin(int t)
     // Destruction de la socket
     close(s);
 
-    fprintf(stderr, "Fin de la session.\n");
+    // fprintf(stderr, "Fin de la session.\n");
 }
 
 /**
  * Fonction qui permet de rediriger le flux de la socket vers tun0
  */
-void extout(int t)
+void ext_out(int t, char* port)
 {
     int s, n;                                         // Descripteurs de socket
     int len, on;                                      // Utilitaires divers
@@ -66,7 +64,6 @@ void extout(int t)
                              PF_INET, SOCK_STREAM, 0, // IP mode connecté
                              0, NULL, NULL, NULL};
     struct sockaddr_in client; // Adresse de socket du client
-    char *port = "123";        // Port pour le service
     int err;                   // Code d'erreur
 
     fprintf(stderr, "Ecoute sur le port %s\n", port);
@@ -92,7 +89,7 @@ void extout(int t)
         perror("Option socket");
         exit(4);
     }
-    fprintf(stderr, "Option(s) OK!\n");
+    // fprintf(stderr, "Option(s) OK!\n");
 
     // Association de la socket s à l'adresse obtenue par résolution
     if (bind(s, resol->ai_addr, sizeof(struct sockaddr_in)) < 0)
@@ -103,7 +100,7 @@ void extout(int t)
 
     // Libération mémoire
     freeaddrinfo(resol);
-    fprintf(stderr, "bind!\n");
+    // fprintf(stderr, "bind!\n");
 
     // la socket est prête à recevoir
     if (listen(s, SOMAXCONN) < 0)
@@ -111,7 +108,7 @@ void extout(int t)
         perror("Listen");
         exit(6);
     }
-    fprintf(stderr, "Listen !\n");
+    // fprintf(stderr, "Listen !\n");
 
     // Attendre et gérer indéfiniment les connexions entrantes
     len = sizeof(struct sockaddr_in);
@@ -134,6 +131,6 @@ void extout(int t)
         fprintf(stderr, "Accept ! (%i) ip=%s port=%s\n", n, hotec, portc);
     }
 
-    // Redirection vers la sortie standard
+    // Redirection vers l'interface virtuelle TUN
     transfert(n, t);
 }

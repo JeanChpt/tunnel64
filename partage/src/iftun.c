@@ -45,8 +45,9 @@ int tun_alloc(char *dev){
 */
 void transfert(int src, int dest){
     char r[1000];
+    int lu;
     while (1){
-        read(src, r, 1000);
-        write(dest, r, 1000);
+        lu = read(src, r, 1000);
+        write(dest, r, lu);
     }
 }

@@ -6,10 +6,10 @@
 #define EXTREMITE_H
 
 // Includes
-#include <unistd.h>
+// #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+// #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -19,11 +19,11 @@
 /**
  * Fonction qui permet de rediriger le flux de tun0 vers la socket
 */
-void extin();
+void ext_in(int t, char* hote, char* port);
 
 /**
  * Fonction qui permet de rediriger le flux de la socket vers tun0
 */
-void extout();
+void ext_out(int t, char* port);
 
 #endif

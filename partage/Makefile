@@ -8,13 +8,14 @@ OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC := gcc
 CFLAGS := -Wall
+LIBS := -lpthread
 
 .PHONY: all clean
 
 all: $(OUT)
 
 $(OUT): $(OBJS) | $(BIN_DIR)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
