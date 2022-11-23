@@ -26,14 +26,23 @@ make
 
 ## Exécution
 
-Dans le répertoire du projet se trouve un répertoire pour chaque VM. Ici seulement deux VMs nous intéresseront pour le tunnel. Il s'agit de VM1 et de VM3. Pour lancer les VMs depuis leur répertoire respectif et lancer le tunnel :
+Dans le répertoire du projet se trouve un répertoire pour chaque VM. Ici seulement deux VMs nous intéresseront pour le tunnel. Il s'agit de VM1 et de VM3. Pour lancer VM1 et démarrer le tunnel vers VM3, faire depuis le répertoire de VM1 :
 
 ```sh
 vagrant up
 cd /mnt/partage
-./bin/tunnel64 tun0 1 &
-./bin/tunnel64 tun0 2 &
+./bin/tunnel64 tun0 "172.16.2.163" "123"
 ```
+
+Pour lancer VM3  et démarrer le tunnel vers VM1, faire depuis le répertoire de VM3 :
+
+```sh
+vagrant up
+cd /mnt/partage
+./bin/tunnel64 tun0 "172.16.2.131" "123"
+```
+
+> Attention, lorsque le tunnel se lance, le serveur démarre en premier. Il faut ensuite appuyer sur une touche pour y connecter le client. Faites donc attention à lancer le serveur sur les deux machines avant de connecter les clients. Sinon la connexion sera impossible.
 
 ## Explications
 
