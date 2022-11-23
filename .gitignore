@@ -1,8 +1,8 @@
 # Le répertoire contenant les exécutables
-partage/bin
+partage/tunnel64/bin
 
 # Le répertoire contenant les objets lors de la compilation
-partage/obj
+partage/tunnel64/obj
 
 # Fichiers propres à Vagrant
 VM*/.vagrant
