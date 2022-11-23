@@ -4,7 +4,7 @@
   tasks:
 
   # Suppression de la passerelle par défaut
-  - name: Suppression de la passerelle par défaut
+  - name: Suppression de la passerelle par defaut
     shell: ip route del default || true
     ignore_errors: true
 
@@ -19,7 +19,7 @@
       ip6: fc00:1234:3::16/64
 
   # Route vers les autres sous réseaux
-  - name: Configuration de la passerelle par défaut
+  - name: Configuration de la passerelle par defaut
     community.general.nmcli:
       type: ethernet
       conn_name: eth1 via ansible

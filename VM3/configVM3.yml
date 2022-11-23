@@ -3,8 +3,13 @@
   remote_user: root
   tasks:
 
+  # Compilation de tunnel64
+  - name: Compilation des fichiers de tunnel64
+    make:
+      chdir: /mnt/partage/tunnel64
+
   # Suppression de la passerelle par défaut
-  - name: Suppression de la passerelle par défaut
+  - name: Suppression de la passerelle par defaut
     shell: ip route del default || true
     ignore_errors: true
 

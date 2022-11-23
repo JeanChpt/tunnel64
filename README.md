@@ -10,19 +10,14 @@ Pour récupérer le code source du projet :
 git clone https://github.com/JeanChpt/tunnel64.git
 ```
 
-Pour se rendre sur la bonne branche (la plus à jour) :
-
-```sh
-cd tunnel64
-git checkout dev
-```
-
 Et enfin pour compiler :
 
 ```sh
-cd partage
+cd partage/tunnel64
 make
 ```
+
+> Concernant la compilation, celle-ci est effectuée automatiquement par le fichier de configuration avec ansible.
 
 ## Exécution
 
@@ -30,7 +25,7 @@ Dans le répertoire du projet se trouve un répertoire pour chaque VM. Ici seule
 
 ```sh
 vagrant up
-cd /mnt/partage
+cd /mnt/partage/tunnel64
 ./bin/tunnel64 tun0 "172.16.2.163" "123"
 ```
 
@@ -38,7 +33,7 @@ Pour lancer VM3  et démarrer le tunnel vers VM1, faire depuis le répertoire de
 
 ```sh
 vagrant up
-cd /mnt/partage
+cd /mnt/partage/tunnel64
 ./bin/tunnel64 tun0 "172.16.2.131" "123"
 ```
 

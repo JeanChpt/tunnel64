@@ -11,7 +11,7 @@
       sysctl_set: yes
 
   # Suppression de la passerelle par défaut
-  - name: Suppression de la passerelle par défaut
+  - name: Suppression de la passerelle par defaut
     shell: ip route del default || true
     ignore_errors: true
 
