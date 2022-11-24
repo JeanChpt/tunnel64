@@ -2,23 +2,25 @@ SRC_DIR := src
 OBJ_DIR := obj
 BIN_DIR := bin
 
-OUT := $(BIN_DIR)/tunnel64
-SRCS := $(wildcard $(SRC_DIR)/*.c)
-OBJS := $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+EXE := $(BIN_DIR)/tunnel64
+ALL_EXE  := $(EXE)
+SRC := $(wildcard $(SRC_DIR)/*.c)
+OBJ := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC := gcc
-CFLAGS := -Wall
+CPPFLAGS := -Iinc -MMD -MP
+CFLAGS   := -Wall -pedantic -g
 LIBS := -lpthread
 
 .PHONY: all clean
 
-all: $(OUT)
+all: $(ALL_EXE)
 
-$(OUT): $(OBJS) | $(BIN_DIR)
+$(EXE): $(OBJ) | $(BIN_DIR)
 	$(CC) $^ -o $@ $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
 
 $(BIN_DIR) $(OBJ_DIR):
 	mkdir -p $@
@@ -26,7 +28,7 @@ $(BIN_DIR) $(OBJ_DIR):
 clean:
 	@$(RM) -rv $(OBJ_DIR)
 
-veryclean: clean
-	@$(RM) -rv $(BIN_DIR)
+veryclean:
+	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
 
 -include $(OBJ:.o=.d)

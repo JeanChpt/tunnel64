@@ -14,4 +14,15 @@ typedef struct {
     char *port; // Port d'écoute du serveur et port de connexion à la sortie du tunnel
 } args_tunnel;
 
+/**
+ * Structure de donnée pour stocker les paramètres issus du fichier
+*/
+typedef struct {
+    char* tun;
+    char* inport;
+    char* options;
+    char* outip;
+    char* outport;
+} args_config;
+
 #endif

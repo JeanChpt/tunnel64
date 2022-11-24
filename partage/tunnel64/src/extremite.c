@@ -10,7 +10,7 @@
  * Fonction qui permet de rediriger le flux de tun0 vers la socket
  * @param t Descripteur de fichier de l'interface tun0
  */
-void ext_in(int t, char* hote, char* port)
+void ext_out(int t, char* hote, char* port)
 {
     char ip[NI_MAXHOST];         // Adresse IPv4 en notation pointée
     struct addrinfo *resol;      // Structure pour la résolution de nom
@@ -55,7 +55,7 @@ void ext_in(int t, char* hote, char* port)
 /**
  * Fonction qui permet de rediriger le flux de la socket vers tun0
  */
-void ext_out(int t, char* port)
+void ext_in(int t, char* port)
 {
     int s, n;                                         // Descripteurs de socket
     int len, on;                                      // Utilitaires divers
