@@ -32,14 +32,14 @@ void ext_out(int t, char* hote, char* port)
         perror("Allocation de socket");
         exit(3);
     }
-    fprintf(stderr, "Le n° de la socket est : %i\n", s);
+    fprintf(stderr, "Le numero de la socket est : %i\n", s);
 
     // Connexion au serveur
     // fprintf(stderr, "Essai de connexion à %s (%s) sur le port %s\n\n", hote, ip, port);
-    if (connect(s, resol->ai_addr, sizeof(struct sockaddr_in)) < 0)
+    while (connect(s, resol->ai_addr, sizeof(struct sockaddr_in)) < 0)
     {
-        perror("Connexion");
-        exit(4);
+        sleep(1);
+        printf(".");
     }
     // Libération mémoire
     freeaddrinfo(resol);

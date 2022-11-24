@@ -3,11 +3,6 @@
   remote_user: root
   tasks:
 
-  # Compilation de tunnel64
-  - name: Compilation des fichiers de tunnel64
-    make:
-      chdir: /mnt/partage/tunnel64
-
   # Suppression de la passerelle par défaut
   - name: Suppression de la passerelle par defaut
     shell: ip route del default || true
@@ -56,3 +51,12 @@
   # Activation de la deuxième interface
   - name: Activation explicite de cette configuration
     shell: nmcli con up "eth2 via ansible"
+  
+  # Compilation de tunnel64
+  - name: Compilation des fichiers de tunnel64
+    make:
+      chdir: /mnt/partage/tunnel64
+
+  # Démarrage de tunnel64
+  - name: Démarrage du tunnel
+    shell: nohup /mnt/partage/tunnel64/bin/tunnel64 >/dev/null 2>&1 &

@@ -18,11 +18,10 @@ typedef struct {
  * Structure de donnée pour stocker les paramètres issus du fichier
 */
 typedef struct {
-    char* tun;
-    char* inport;
-    char* options;
-    char* outip;
-    char* outport;
+    char tun[20];
+    char inport[10];
+    char outip[50];
+    char outport[50];
 } args_config;
 
 #endif
