@@ -17,7 +17,13 @@ cd partage/tunnel64
 make
 ```
 
-> Concernant la compilation, celle-ci est effectuée automatiquement par le fichier de configuration avec ansible.
+> Concernant la compilation, celle-ci est effectuée automatiquement par le fichier de configuration avec ansible. Il n'est donc pas nécessaire de compiler à la main.
+
+Pour nettoyer les répertoires de compilation, utiliser la commande :
+
+```sh
+make veryclean
+```
 
 ## Exécution
 
@@ -26,7 +32,7 @@ Dans le répertoire du projet se trouve un répertoire pour chaque VM. Ici seule
 ```sh
 vagrant up
 cd /mnt/partage/tunnel64
-./bin/tunnel64 tun0 "172.16.2.163" "123"
+./bin/tunnel64
 ```
 
 Pour lancer VM3  et démarrer le tunnel vers VM1, faire depuis le répertoire de VM3 :
@@ -34,11 +40,21 @@ Pour lancer VM3  et démarrer le tunnel vers VM1, faire depuis le répertoire de
 ```sh
 vagrant up
 cd /mnt/partage/tunnel64
-./bin/tunnel64 tun0 "172.16.2.131" "123"
+./bin/tunnel64
 ```
 
-> Attention, lorsque le tunnel se lance, le serveur démarre en premier. Il faut ensuite appuyer sur une touche pour y connecter le client. Faites donc attention à lancer le serveur sur les deux machines avant de connecter les clients. Sinon la connexion sera impossible.
+> Attention, le tunnel lis sa configuration dans le fichier `tunnel64.conf` situé dans le répertoire `/vagrant` sur VM1 et VM3. Les fichiers sont préconfigurés pour ce projet, cependant il est possible de les modifier en respectant la structure ci-dessous :
+
+```
+# Nom de l'inteface virtuelle TUN
+tun=tun0
+# Adresse locale (entrée du tunnel)
+inport=123
+# Adresse distante (sortie du tunnel)
+outip=172.16.2.163
+outport=123
+```
 
 ## Explications
 
-Pour avoir plus d'informations sur le projet, le rapport PDF est disponible dans le répertoire docs avec les captures de test Wireshark (pas encore complet pour le moment)
+Pour avoir plus d'informations sur le projet, le rapport PDF est disponible dans le répertoire docs avec les captures de tests Wireshark (pas encore complet pour le moment).

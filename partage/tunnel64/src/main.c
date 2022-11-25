@@ -14,8 +14,6 @@
 
 /**
  * Fonction principale du programme tunnel64
- * @param argc Le nombre d'arguments du programme
- * @param argv Les arguments d'appel du programme
 */
 int main (void){
     printf("Début");
