@@ -30,7 +30,7 @@ int main (void){
     printf("Application de la configuration de %s contenue dans le script configure-tun.sh...\n",conf.tun);
     printf("Appuyez sur une touche pour continuer\n");
     getchar();
-    system("/bin/bash ./scripts/configure-tun.sh");
+    system("/bin/bash /mnt/partage/tunnel64/scripts/configure-tun.sh");
     printf("Interface %s configuree:\n",conf.tun);
     system("ip addr");
 
