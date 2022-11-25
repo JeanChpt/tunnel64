@@ -25,141 +25,156 @@
     Pour cela, on reprend notre configuration du TP précédent en y apportant 
     quelques modifications. Premièrement, on supprime la configuration de la 
     deuxième interface dans les fichiers de configuration ansible sur les 
-    machines VM1.6 et VM3.6 car ces machines n'en auront plus la nécessité. 
-    (Cela n'est pas nécessaire pour le bon fonctionnement mais ça permet de 
-    faire un peu de propre). On supprime de plus les routes devenues obsolètes 
-    permettant auparavant le passage par VM2.6 pour la communication en IPv6.
+    machines \verb+VM1-6+ et \verb+VM3-6+ car ces machines n'en auront plus 
+    la nécessité. (Cela n'est pas nécessaire pour le bon fonctionnement mais ça
+    permet de faire un peu de propre). On supprime de plus les routes devenues 
+    obsolètes permettant auparavant le passage par \verb+VM2-6+ pour la communication 
+    en \verb+IPv6+.
 
-    \section{Interface TUN}
+    \section{Interface virtuelle}
     Une fois notre configuration terminée avec ansible, on s'intéresse 
     maintenant à la création et à la configuration d'une interface virtuelle
-    TUN qui nous permettra d'effectuer la communication entre l'espace noyau
-    (d'où provient une trame échangée sur le réseau) vers l'espace utilisateur
-    (où se trouvera le code de notre tunnel).
+    \verb+TUN+ qui nous permettra d'effectuer la communication entre l'espace 
+    noyau (d'où provient une trame échangée sur le réseau) vers l'espace 
+    utilisateur (où se trouvera le code de notre tunnel).
 
     \subsection{Création de l'interface}
-    Afin de créer l'interface TUN, on récupère le code contenu dans le 
-    fichier tunalloc.c. Celui-ci contient la fonction tun\_alloc et une 
-    fonction principale main. Lorsque l'on regarde d'un peu plus près la 
-    fonction tun\_alloc, on remarque que lors de son appel elle retourne
-    un entier. Il s'agit du descripteur de fichier permettant la lecture
-    ou bien l'écriture sur cette interface. \\
+    Afin de créer l'interface virtuelle \verb+TUN+, on récupère le code fourni 
+    contenu dans le fichier \verb+tunalloc.c+. Celui-ci contient la fonction 
+    \verb+tun_alloc()+ et une fonction principale \verb+main()+. Lorsque l'on 
+    regarde d'un peu plus près la fonction \verb+tun_alloc()+, on remarque que 
+    lors de son appel elle retourne un entier. Il s'agit du descripteur de 
+    fichier permettant la lecture ou bien l'écriture sur cette interface. \\
 
-    On crée donc une bibliothèque \textit{iftun}, c'est-à-dire un fichier
-    d'en-tête iftun.h et un fichier source iftun.c afin d'y ajouter la fonction
-    tun\_alloc. En plus de cela on crée un fichier principal avec une fonction 
-    main nous permettant d'effectuer les tests de cette partie et les suivants.
+    On crée donc une bibliothèque \verb+iftun+, c'est-à-dire un fichier 
+    d'en-tête \verb+iftun.h+ et un fichier source \verb+iftun.c+ afin d'y 
+    ajouter la fonction \verb+tun_alloc()+. En plus de cela on crée un fichier 
+    principal avec une fonction \verb+main()+ nous permettant d'effectuer les 
+    tests de cette partie et les suivants.
 
     \subsection{Configuration de l'interface}
-    Pour configurer l'interface TUN, on a besoin de lui attribuer une addresse
-    IPv6. Nous utiliseront l'adresse \textit{fc00:1234:ffff::1} avec le masque
-    en /64. Comme rappelé un peu plus haut il est aussi nécessaire de modifier
-    les configurations créées au TP précédent car dans notre cas certaines 
-    routes ne sont plus valides. Par exemple pour VM1 et VM1.6, dans le cas où
-    ces machines voudraient communiquer avec VM3.6, elles ne pourront plus 
-    passer par VM2.6. \\
+    Pour configurer l'interface \verb+TUN+, on a besoin de lui attribuer une 
+    addresse \verb+IPv6+. Nous utiliseront l'adresse \verb+fc00:1234:ffff::1+ 
+    avec le masque en \verb+/32+. On choisit un masque en \verb+/32+ car on 
+    remarque qu'à la création de \verb+tun0+ une route est ajoutée vers 
+    \verb+fc00:1234::/32+. Cela permettra le routage des paquets entrants en 
+    direction de \verb+LAN4-6+ ou \verb+LAN3-6+ via l'interface \verb+tun0+ et
+    donc le tunnel. Comme rappelé un peu plus haut il est aussi nécessaire de 
+    modifier les configurations créées au TP précédent car dans notre cas 
+    certaines routes ne sont plus valides. Par exemple pour \verb+VM1+ et 
+    \verb+VM1-6+, dans le cas où ces machines voudraient communiquer avec 
+    \verb+VM3-6+, elles ne pourront plus passer par \verb+VM2-6+. \\
 
-    On crée donc un script \textit{configure\_tun.sh} qui contiendra la commande
-    \textit{ip address add fc00:1234:ffff::1/64 dev tun0}. Cela ne suffit pas 
-    car lorsque l'interface TUN est créée, elle est désactivée. Pour l'activer 
-    on rajoute une ligne de plus dans le script avec la commande \textit{ip 
-    link set dev tun0 up}. La configuration est maintenant terminée. \\
+    On crée donc un script \verb+configure_tun.sh+ qui contiendra les commandes
+    de configuration de l'interface virtuelle. suivantes.
+    \verb+ip address add fc00:1234:ffff::1/64 dev tun0+ pour lui ajouter 
+    l'adresse \verb+IP+. Mais aussi la commande \verb+ip link set dev tun0 up+
+    afin d'activer l'interface qui était pour le moment en état \verb+down+ 
+    après sa création \\
 
     Afin de tester notre configuration et après avoir lancé notre programme de 
-    test sur VM1, on tente d'effectuer un \textit{ping6} de VM1.6 vers 
-    l'interface tun0 sur VM1. Celui-ci se déroule dans problème et reçoit une 
-    réponse. Cependant, si l'on effectue une capture wireshark sur VM1, on se 
-    rend compte que les échanges ne passent pas par tun0. En effet, celle-ci ne
-    capte aucune trame. Cela peut s'expliquer car lorsque la trame envoyée par 
-    VM1.6 arrive sur VM1 par son interface eth2 (passerelle par défaut de 
-    VM1.6) elle est désencapsulée afin de regarder qui est le destinataire pour
-    pouvoir lui transmettre dans une nouvelle trame. Voyant que le destinataire
-    est en réalité lui-même, le routeur VM1 peut traiter la demande et envoyer 
-    sa réponse. Cela se déroule dans l'espace noyau. \\
+    test sur \verb+VM1+, on tente d'effectuer un \verb+ping -6+ de \verb+VM1-6+
+    vers l'interface \verb+tun0+ sur \verb+VM1+. Celui-ci se déroule sans 
+    problème et reçoit une réponse. Cependant, si l'on effectue une capture 
+    wireshark sur \verb+VM1+, on se rend compte que les échanges ne passent pas 
+    par \verb+tun0+. En effet, celle-ci ne capte aucune trame. Cela peut 
+    s'expliquer car lorsque la trame envoyée par \verb+VM1-6+ arrive sur 
+    \verb+VM1+ par son interface \verb+eth2+ (passerelle par défaut de 
+    \verb+VM1-6+) elle est désencapsulée afin de regarder qui est le 
+    destinataire pour pouvoir lui transmettre dans une nouvelle trame. Voyant
+    que le destinataire est en réalité lui-même, le routeur \verb+VM1+ peut 
+    traiter la demande et envoyer sa réponse. Cela se déroule dans l'espace 
+    noyau. \\
 
-    On effectue ensuite le test en faisant \textit{ping6} depuis VM1 vers
-    l'addresse \textit{fc00:1234:ffff::10}. Cette fois-ci le ping ne reçoit 
-    pas de réponse mais en effectuant une analyse de paquets avec wireshark
-    sur VM1, on se rend compte que les paquets sont transmis depuis 
-    l'interface eth2 de VM1 vers tun0. Le ping ne reçoit ainsi pas de réponse 
-    car pour le moment les paquets dans tun0 ne sont pas traités. Attention 
-    car pour cette partie il faut bien penser à ajouter le drapeau de routage
-    IPv6 sur VM1 (et par symétrie sur VM3) sinon la transmission entre 
+    On effectue ensuite le test en faisant un \verb+ping -6+ depuis \verb+VM1+
+    vers l'addresse \verb+IPv6+ suivante : \\ \verb+fc00:1234:ffff::10+. Cette 
+    fois-ci le ping ne reçoit pas de réponse mais en effectuant une analyse de 
+    paquets avec wireshark sur \verb+VM1+, on se rend compte que les paquets 
+    sont transmis depuis l'interface \verb+eth2+ de \verb+VM1+ vers \verb+tun0+
+    .Le ping ne reçoit ainsi pas de réponse car pour le moment les paquets 
+    injectés dans \verb+tun0+ ne sont pas traités. Attention car pour cette 
+    partie il faut bien penser à ajouter le drapeau de routage \verb+IPv6+ sur 
+    \verb+VM1+ (et par symétrie sur \verb+VM3+) sinon la transmission entre 
     interfaces d'une même machine ne pourra pas s'effectuer. 
 
     \subsection{Récupération des paquets}
     Maintenant que l'on sait que les paquets sont redirigés sur l'interface
-    virtuelle tun0 dont nous disposons du descripteur de fichier, on peut 
-    s'intéresser à la récupération des informations dans tun0. On complète
-    donc notre bibliothèque iftun avec une nouvelle fonction transfert qui
-    permettra de transférer les données lues sur un descripteur de fichier
-    source vers un descripteur de fichier destination. \\
+    virtuelle \verb+tun0+ dont nous disposons du descripteur de fichier, on 
+    peut s'intéresser à la récupération des informations depuis \verb+tun0+. 
+    On complète donc notre bibliothèque \verb+iftun+ avec une nouvelle fonction
+    transfert qui permettra de transférer les données lues sur un descripteur 
+    de fichier source vers un descripteur de fichier destination. \\
 
     On effectue donc le test de cette fonction avec comme descripteur de 
-    fichier source celui retourné par la création de l'interface tun0 et
+    fichier source celui retourné par la création de l'interface \verb+tun0+ et
     comme descripteur de fichier destination 1 (qui correspond à la 
     sortie standard). On effectue à nouveau les pings réalisés précédemment
-    depuis VM1.6. Au niveau du réseau rien ne change, Les captures sont 
-    identiques. Cependant, on observe les paquets entrants sur tun0 s'afficher
-    dans le terminal. Attention à bien filtrer l'affichage avec 
-    \textit{hexdump} afin de rendre cela plus lisible. \\
+    depuis \verb+VM1-6+. Au niveau du réseau rien ne change, Les captures sont 
+    identiques. Cependant, on observe les paquets entrants sur \verb+tun0+ 
+    s'afficher dans le terminal. Ceux-ci étant en binaire, on les rends plus 
+    lisibles en filtrant l'affichage avec \verb+hexdump+ afin de rendre cela 
+    plus lisible. \\
 
     Différentes options sont disponibles lorsque l'on crée l'interface 
-    virtuelle. On peut utiliser les flags suivants: IFF\_TUN, IFF\_TAP et
-    IFF\_NO\_PI. IFF\_TUN est celui que l'on utilise car il permet de 
-    supprimer les en-têtes Ethernet afin de ne garder que le datagramme IP.
-    IFF\_NO\_PI permet de retirer les 4 octets concernant la version du 
-    protocole de couche IP. Le flag IFF\_NO\_PI peut s'ajouter en plus du 
-    flag IFF\_TUN, les flags sont cumulables.
+    virtuelle. On peut utiliser les flags suivants: \verb+IFF_TUN+, 
+    \verb+IFF_TAP+ et \verb+IFF_NO_PI+. \verb+IFF_TUN+ est celui que l'on 
+    utilise car il permet de supprimer les en-têtes Ethernet afin de ne garder
+    que le datagramme IP. \verb+IFF_NO_PI+ permet de retirer les 4 octets 
+    concernant la version du protocole de couche IP. Le flag \verb+IFF_NO_PI+ 
+    peut s'ajouter en plus du flag \verb+IFF_TUN+, les flags sont cumulables.
 
     \section{Un tunnel simple pour IPv6}
 
-    Afin de faire communiquer VM1 et VM3 qui sont reliés par le biais de VM2
-    en IPv4, on utilisera la connexion par socket à l'image d'un client et 
-    d'un serveur. Pour cela on créera une nouvelle bibliothèque extremite avec
-    un fichier d'en-têtes extremite.h et son fichier source extremite.c.
+    Afin de faire communiquer \verb+VM1+ et \verb+VM3+ qui sont reliés par le 
+    biais de \verb+VM2+ en \verb+IPv4+, on utilisera la connexion par socket à
+    l'image d'un client et d'un serveur. Pour cela on crée une nouvelle 
+    bibliothèque \verb+extremite+ qui contiendra les fonctions nécessaires à
+    l'envoi et à la réception des datagrammes.
 
     \subsection{Redirection du traffic entrant}
 
-    Afin de rediriger le traffic lu sur tun0 vers notre réseau IPv4, il nous
-    faut créer une fonction extin qui aura en réalité un rôle de client et qui
-    sera chargée d'ouvrir une connexion avec l'autre extrémité du tunnel afin
-    de lui envoyer tout ce qui est lu. Après avoir ouvert une connexion 
-    distante sur sa socket, on peut simplement effectuer un appel à notre 
-    fonction transfert de la bibliothèque iftun. Celle-ci prend deux 
-    descripteurs de fichiers en paramètres, le premier étant celui retourné par
-    tun0 et le deuxième la socket en elle-même. \\
+    Afin de rediriger le traffic lu depuis \verb+tun0+ vers notre réseau 
+    \verb+IPv4+, il nous faut créer une fonction \verb+ext_in()+ qui aura en 
+    réalité un rôle de client et qui sera chargée d'ouvrir une connexion avec 
+    l'autre extrémité du tunnel afin de lui envoyer tout ce qui est lu. Après 
+    avoir ouvert une connexion distante sur sa socket, on peut simplement 
+    effectuer un appel à notre fonction \verb+transfert()+ de la bibliothèque 
+    \verb+iftun+. Celle-ci prend deux descripteurs de fichiers en paramètres, 
+    le premier étant celui retourné par \verb+tun0+ et le deuxième la socket 
+    en elle-même. \\
 
-    En plus de la fonction extin, il nous faut aussi une fonction extout qui 
-    sera chargée du rôle de serveur et qui écoutera donc sur sa socket afin de 
-    rediriger dans un premier temps vers la sortie standard (descripteur de 
-    fichier 1) afin de vérifier que tout fonctionne correctement. La 
-    redirection est ici aussi effectuée à l'aide de la fonction transfert de la
-    bibliothèque iftun. À terme le transfert ne s'effectuera plus vers la sortie 
-    standard mais bien sur le descripteur de fichier de tun0 afin de réinjecter
-    notre datagramme IPv6 dans le réseau. \\
+    En plus de la fonction \verb+ext_in()+, il nous faut aussi une fonction 
+    \verb+ext_out()+ qui sera chargée du rôle de serveur et qui écoutera donc
+    sur sa socket afin de rediriger dans un premier temps vers la sortie 
+    standard (descripteur de fichier 1) afin de vérifier que tout fonctionne 
+    correctement. La redirection est ici aussi effectuée à l'aide de la 
+    fonction transfert de la bibliothèque \verb+iftun+. À terme le transfert ne
+    s'effectuera plus vers la sortie standard mais bien sur le descripteur de 
+    fichier de \verb+tun0+ afin de réinjecter notre datagramme \verb+IPv6+ dans
+    le réseau. \\
 
-    Lorque tout est  mis en place, c'est à dire que le programme de test est
-    lancé en mode client sur VM1 et en mode serveur sur VM3, on peut effectuer 
-    notre \textit{ping6} habituel depuis VM1.6 vers 
-    \textit{fc00:1234:ffff::10}. Si l'on se place ensuite sur VM3, on voit 
-    l'ensemble des paquets arriver depuis le tunnel s'afficher sur la sortie
-    standard.
+    Lorque tout est mis en place, c'est à dire que le programme de test est
+    lancé en mode client sur \verb+VM1+ et en mode serveur sur \verb+VM3+, on
+    peut effectuer notre \verb+ping -6+ habituel depuis \verb+VM1-6+ vers 
+    l'adresse \verb+fc00:1234:ffff::10+. Si l'on se place ensuite sur 
+    \verb+VM3+, on voit l'ensemble des paquets arriver depuis le tunnel 
+    s'afficher sur la sortie standard.
 
     \subsection{Redirection du traffic sortant}
 
     Maintenant qu'il est possible pour nous d'afficher le contenu du tunnel
-    sur la sortie standard de VM3, on veut pouvoir le rediriger son interface
-    virtuelle tun0. Cela aura pour but de réintégrer le datagramme IPv6
-    transporté par le tunnel sur IPv4 dans le réseau IPv6. Pour cela il suffit
-    de modifier la fonction extout de la bibliothèque extremite en effectuant
-    un transfert non plus vers 1 (sortie standard) mais vers le descripteur de
-    fichier retourné par tun0. \\
+    sur la sortie standard de \verb+VM3+, on veut pouvoir le rediriger vers son
+    interface virtuelle \verb+tun0+. Cela aura pour but de réintégrer le 
+    datagramme \verb+IPv6+ transporté par le tunnel sur \verb+IPv4+ dans le 
+    réseau \verb+IPv6+. Pour cela il suffit de modifier la fonction 
+    \verb+ext_out()+ de la bibliothèque \verb+extremite+ en effectuant un 
+    transfert non plus vers 1 (sortie standard) mais vers le descripteur de
+    fichier retourné par \verb+tun0+. \\
 
-    De cette manière les datagrammes IPv6 qui étaient transportés par un 
-    datagramme IPv4 dans le tunnel sont réintégrés dans un réseau IPv6 à la 
-    sortie de celui-ci. Cela permet à la machine VM3.6 de recevoir le ping 
-    provenant de VM1.6
+    De cette manière les datagrammes \verb+IPv6+ qui étaient transportés par un 
+    datagramme \verb+IPv4+ dans le tunnel sont réintégrés dans un réseau 
+    \verb+IPv6+ à la sortie de celui-ci. Cela permet à la machine \verb+VM3-6+ 
+    de recevoir le ping provenant de \verb+VM1-6+.
 
     \subsection{Intégration finale du tunnel}
     \subsection{Mise en place du tunnel entre VM1 et VM3: Schémas}
