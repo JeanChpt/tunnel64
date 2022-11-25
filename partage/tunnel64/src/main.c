@@ -32,16 +32,16 @@ int main (void){
     printf("Interface %s configuree:\n",conf.tun);
     system("ip addr");
 
-    args_in.tunfd = tunfd;
-    args_in.port = conf.inport;
-    pthread_create(&serveur, NULL, exec_in, (void *)&args_in);
+    args_out.tunfd = tunfd;
+    args_out.port = conf.inport;
+    pthread_create(&serveur, NULL, exec_out, (void *)&args_out);
     printf("Appuyez sur une touche pour connecter le client\n");
     getchar();
 
-    args_out.tunfd = tunfd;
-    args_out.hote = conf.outip;
-    args_out.port = conf.outport;
-    pthread_create(&client, NULL, exec_out, (void *)&args_out);
+    args_in.tunfd = tunfd;
+    args_in.hote = conf.outip;
+    args_in.port = conf.outport;
+    pthread_create(&client, NULL, exec_in, (void *)&args_in);
     printf("Appuyez sur une touche pour arreter le client\n");
     getchar();
             
