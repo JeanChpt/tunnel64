@@ -2,6 +2,28 @@
 
 > Il s'agit du projet final de l'UE Réseaux du M1 Informatique AMU. Il s'agit d'un programme permettant l'interconnexion de deux réseaux IPv6 par le biais d'un réseau IPv4. Projet en cours de développement, la version la plus à jour se trouve donc sur la branche dev.
 
+```
+Structure du projet
+├── doc
+│   ├── images           # images et captures d'écrans
+│   └── rapport.pdf      # rapport du projet
+├── partage              # dossier partagé entre les VMs
+│   └── tunnel64         # répertoire contenant l'application
+│       ├── inc          # fichiers d'en-têtes
+│       ├── src          # fichiers sources
+│       ├── scripts      # scripts de configuration
+│       └── Makefile      # pour compiler le projet
+│       
+├── VM1
+│   ├── Vagrantfile       # fichier propre à vagrant
+│   ├── config.yml        # fichier de configuration ansible
+│   └── tunnel64.conf    # fichier de configuration du tunnel
+├── VM2
+├── VM3
+├── VM1-6
+└── VM3-6     
+```
+
 ## Compilation
 
 Pour récupérer le code source du projet :
