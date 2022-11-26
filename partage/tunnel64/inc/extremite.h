@@ -18,11 +18,11 @@
 /**
  * Fonction qui permet de rediriger le flux de tun0 vers la socket
 */
-void ext_out(int t, char* hote, char* port);
+void ext_in(int t, char* hote, char* port);
 
 /**
  * Fonction qui permet de rediriger le flux de la socket vers tun0
 */
-void ext_in(int t, char* port);
+void ext_out(int t, char* port);
 
 #endif

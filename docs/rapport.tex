@@ -174,12 +174,56 @@
     De cette manière les datagrammes \verb+IPv6+ qui étaient transportés par un 
     datagramme \verb+IPv4+ dans le tunnel sont réintégrés dans un réseau 
     \verb+IPv6+ à la sortie de celui-ci. Cela permet à la machine \verb+VM3-6+ 
-    de recevoir le ping provenant de \verb+VM1-6+.
+    de recevoir le ping provenant de \verb+VM1-6+. Pour vérifier le bon
+    fonctionnement du tunnel, on peut prendre un datagramme \verb+IPv6+ avec
+    comme adresse de destination la machine \verb+VM3-6+ et l'envoyer sur la
+    socket d'écoute de la sortie du tunnel sur \verb+VM3+. On réalise cela à 
+    l'aide de la commande \verb+nc 172.16.2.163 123 < datagramme-v6.bin+. On 
+    se place sur VM3 et on observe le paquet entrant être redirigé vers 
+    \verb+tun0+ puis arriver sur \verb+VM3-6+.
 
     \subsection{Intégration finale du tunnel}
+
+    Maintenant que notre datagramme \verb+IPv6+ arrive à rejoindre notre second 
+    réseau \verb+IPv6+, on cherche à faire fonctionner notre tunnel dans les 
+    sens. Pour cela, il nous faut lancer les fonctions \verb+ext_in()+ et 
+    \verb+ext_out()+ à chaque extrémité du tunnel. Afin que cela soit possible
+    on décide de passer l'adresse \verb+IPv4+ de la sortie du tunnel en 
+    paramètres de la fonction \verb+ext_in()+. Avec une modification de notre 
+    fonction principale \verb+main()+, on lui permet de lancer le tunnel soit 
+    sur \verb+VM1+ soit sur \verb+VM2+. \\
+
+    Pour lancer à la fois la fonction \verb+ext_in()+ et la fonction 
+    \verb+ext_out()+, on utilisera la librairie C \verb+pthreads+ qui permet 
+    de lancer des threads d'exécution assez simplement au lieu d'utiliser les
+    processus système avec des appels à \verb+fork()+. Pour pouvoir lancer ces
+    threads depuis le main, on aura besoin d'une bibliothèque supplémentaire 
+    que l'on nommera \verb+executeur+. Cette bibliothèque contient deux 
+    pointeurs de fonctions qui font appel à \verb+ext_in()+ et \verb+ext_out()+.
+    On crée aussi une structure de donnée permettant de passer les arguments
+    nécessaires au lancement du tunnel à nos fonctions. \\
+
+    Après avoir lancé le tunnel sur \verb+VM1+ et sur \verb+VM2+, on effectue 
+    des pings entre \verb+VM1-6+ et \verb+VM3-6+. Pour vérifier que tout est
+    bon on effectue une capture wireshark du traffic circulant sur \verb+VM2+
+    en \verb+IPv4+. On effectue une seconde capture  sur \verb+VM3+ en 
+    \verb+IPv6+. D'après l'analyse de ces captures situées dans le répertoire 
+    \verb+docs+, tout est fonctionnel.
+
     \subsection{Mise en place du tunnel entre VM1 et VM3: Schémas}
 
     $$\includegraphics[scale=0.6]{images/schema_reseau.jpg}$$ \\
+
+    Voici le schéma plus détaillé du fonctionnement du tunnel. Lorsqu'un 
+    datagramme \verb+IPv6+ est à destination de l'autre extrémité du tunnel,
+    il est lu sur l'interface virtuelle \verb+TUN+ (\verb+tun0+) et encapsulé 
+    dans un datagramme \verb+IPv4+ en étant écrit sur la socket ouverte par la 
+    fonction \verb+ext_in()+. Il est ensuite acheminé jusqu'à sa destination 
+    (c'est-à-dire \verb+VM3+ dans notre cas) en empruntant le réseau \verb+IPv4+
+    (\verb+LAN1+ et \verb+LAN2+ ici). A son arrivée à la sortie du tunnel, le 
+    datagramme \verb+IPv6+ est désencapsulé du datagramme \verb+IPv4+ puis écrit 
+    dans l'interface virtuelle \verb+TUN+ (\verb+tun0+) afin de rejoindre sa 
+    destination en \verb+IPv6+.
 
     \subsection{Mise en place du tunnel entre VM1 et VM3: Système}
 
