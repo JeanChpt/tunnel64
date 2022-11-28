@@ -1,0 +1,5 @@
+::1 dev lo proto kernel metric 256 pref medium
+fc00:1234:4::/64 dev eth1 proto kernel metric 100 pref medium
+fe80::/64 dev eth1 proto kernel metric 100 pref medium
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+default via fc00:1234:4::3 dev eth1 proto static metric 100 pref medium

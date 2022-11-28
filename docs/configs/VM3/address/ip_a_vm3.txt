@@ -1,0 +1,14 @@
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:75:06:2c brd ff:ff:ff:ff:ff:ff
+    altname enp0s8
+    inet 172.16.2.163/28 brd 172.16.2.175 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:c9:2c:66 brd ff:ff:ff:ff:ff:ff
+    altname enp0s9
+    inet6 fc00:1234:4::3/64 scope global noprefixroute 
+       valid_lft forever preferred_lft forever
+5: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 500
+    link/none 
+    inet6 fc00:1234:ffff::1/32 scope global 
+       valid_lft forever preferred_lft forever

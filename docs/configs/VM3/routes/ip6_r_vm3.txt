@@ -1,0 +1,7 @@
+::1 dev lo proto kernel metric 256 pref medium
+fc00:1234:4::/64 dev eth2 proto kernel metric 102 pref medium
+fc00:1234::/32 dev tun0 proto kernel metric 256 pref medium
+fe80::/64 dev eth1 proto kernel metric 101 pref medium
+fe80::/64 dev eth2 proto kernel metric 102 pref medium
+fe80::/64 dev eth0 proto kernel metric 256 pref medium
+fe80::/64 dev tun0 proto kernel metric 256 pref medium

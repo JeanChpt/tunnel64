@@ -1,0 +1,3 @@
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 
+172.16.2.128/28 dev eth1 proto kernel scope link src 172.16.2.131 metric 100 
+172.16.2.160/28 via 172.16.2.132 dev eth1 proto static metric 100 
