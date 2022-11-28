@@ -1,0 +1,62 @@
+# Configuration de VM3
+- hosts: localhost
+  remote_user: root
+  tasks:
+
+  # Suppression de la passerelle par défaut
+  - name: Suppression de la passerelle par defaut
+    shell: ip route del default || true
+    ignore_errors: true
+
+    # Activation du drapeau de routage IPv6
+  - name: Activation du routage IPv6
+    sysctl:
+      name: net.ipv6.conf.all.forwarding
+      value: '1'
+      sysctl_set: yes
+
+  # Configuration de la première interface
+  - name: Configuration de VM3/eth1
+    nmcli:
+      type: ethernet
+      conn_name: eth1 via ansible
+      ifname: eth1
+      state: present
+      autoconnect: true
+      ip4: 172.16.2.163/28
+
+  # Configuration de la deuxième interface
+  - name: Configuration de VM3/eth2
+    nmcli:
+      type: ethernet
+      conn_name: eth2 via ansible
+      ifname: eth2
+      state: present
+      autoconnect: true
+      ip6: fc00:1234:4::3/64
+
+  # Route vers les autres sous réseaux IPv4
+  - name: Configuration de la route vers LAN1 via VM2
+    community.general.nmcli:
+      type: ethernet
+      conn_name: eth1 via ansible
+      ifname: eth1
+      routes4: 172.16.2.128/28  172.16.2.162
+      state: present
+
+  # Activation de la première interface
+  - name: Activation explicite de cette configuration
+    shell: nmcli con up "eth1 via ansible"
+
+  # Activation de la deuxième interface
+  - name: Activation explicite de cette configuration
+    shell: nmcli con up "eth2 via ansible"
+  
+  # Compilation de tunnel64
+  - name: Compilation des fichiers de tunnel64
+    make:
+      chdir: /mnt/partage/tunnel64
+
+  # Démarrage de tunnel64
+  - name: Démarrage du tunnel
+    shell: nohup /mnt/partage/tunnel64/bin/tunnel64 >/dev/null 2>&1 &
