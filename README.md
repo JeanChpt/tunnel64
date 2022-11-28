@@ -12,11 +12,11 @@ Structure du projet
 │       ├── inc          # fichiers d'en-têtes
 │       ├── src          # fichiers sources
 │       ├── scripts      # scripts de configuration
-│       └── Makefile      # pour compiler le projet
+│       └── Makefile     # pour compiler le projet
 │       
 ├── VM1
-│   ├── Vagrantfile       # fichier propre à vagrant
-│   ├── config.yml        # fichier de configuration ansible
+│   ├── Vagrantfile      # fichier propre à vagrant
+│   ├── config.yml       # fichier de configuration ansible
 │   └── tunnel64.conf    # fichier de configuration du tunnel
 ├── VM2
 ├── VM3
@@ -79,4 +79,4 @@ outport=123
 
 ## Explications
 
-Pour avoir plus d'informations sur le projet, le rapport PDF est disponible dans le répertoire docs avec les captures de tests Wireshark (pas encore complet pour le moment).
+Pour avoir plus d'informations sur le projet, le rapport PDF est disponible dans le répertoire docs avec les captures de tests Wireshark.
