@@ -227,4 +227,38 @@
 
     \subsection{Mise en place du tunnel entre VM1 et VM3: Système}
 
+    Pour n'avoir qu'un simple exécutable permettant de démarrer le tunnel, on 
+    s'intéresse à la lecture des paramètres de celui-ci depuis un fichier de 
+    configuration \verb+tunnel64.conf+. On crée alors une bibliothèque de
+    fonctions \verb+config+ dont le rôle est de récupérer les paramètres de 
+    configuration dans le fichier afin de pouvoir les faire passer en argument
+    de nos appels à \verb+ext_in()+ et \verb+ext_out()+. Une fois cela fait, 
+    on peut essayer de démarrer le tunnel sur \verb+VM1+ et \verb+VM3+ avec la 
+    commande \verb+./bin/tunnel64+ depuis le répertoire \verb+/mnt/partage/tunnel64+.
+    Le tunnel se lance correctementet les pings entre \verb+VM1-6+ et \verb+VM3-6+ 
+    sont fonctionnels.
+
+    \section{Validation fonctionnelle}
+
+    \subsection{Configuration}
+
+    Sur chaque machine de notre réseau (\verb+VM1+, \verb+VM2+, \verb+VM2+, 
+    \verb+VM1-6+ et \verb+VM3-6+) on récupère les paramètres réseaux 
+    significatifs avec les commandes \verb+ip a+ et \verb+ip r+. 
+
+    \subsection{Couche 3}
+
+    On se place sur \verb+VM1-6+ et on effectue un ping vers \verb+fc00:1234:4::36+.
+    Celui-ci se termine sans erreur et nous donne les captures d'écran situées dans 
+    le répertoire \verb+docs/images+. On effectue en plus deux captures à l'aide de 
+    wireshark. Une en \verb+IPv4+ sur \verb+VM2+ et une en \verb+IPv6+ sur \verb+VM3+.
+    Ces captures sont aussi disponibles dans le répertoire \verb+docs+. On y voit 
+    notre datagramme \verb+IPv6+ envoyé par \verb+VM1-6+ circuler en données d'un 
+    datagramme \verb+IPv4+ sur \verb+VM2+ puis on le retrouve sur le réseau 
+    \verb+IPv6+ de \verb+VM3+ lorsqu'il est réintroduit sur \verb+tun0+.
+
+    \subsection{Couche 4}
+
 \end{document}
+
+/
