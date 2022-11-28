@@ -264,6 +264,19 @@
 
     \subsection{Couche 4}
 
+    Pour tester un peu plus en profondeur le fonctionnement du tunnel, on essaye
+    de se connecter au service \verb+echo+ de \verb+VM3-6+ depuis \verb+VM1-6+.
+    Pour cela on utilise la commande telnet suivante : 
+    \verb+telnet fc00:1234:4::36 echo+. La connexion se déroule sans problème 
+    et le service \verb+echo+ fonctionne correctement.
+
+    \subsection{Couche 4 : bande passante}
+
+    On s'intéresse maintenant à la performance de notre tunnel. Pour cela, nous 
+    allons utiliser l'utilitaire \verb+iperf3+. On commence par le lancer en
+    mode serveur sur \verb+VM3-6+ puis on essaye avec différentes tailles de 
+    tampon depuis \verb+VM1-6+.
+
     \section{Améliorations}
 
     \subsection{Configuration via ansible}
