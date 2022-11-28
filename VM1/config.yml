@@ -58,5 +58,5 @@
       chdir: /mnt/partage/tunnel64
 
   # Démarrage de tunnel64
-  - name: Démarrage du tunnel
+  - name: Demarrage du tunnel
     shell: nohup /mnt/partage/tunnel64/bin/tunnel64 >/dev/null 2>&1 &
