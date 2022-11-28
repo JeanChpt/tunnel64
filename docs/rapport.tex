@@ -259,6 +259,30 @@
 
     \subsection{Couche 4}
 
+    \section{Améliorations}
+
+    \subsection{Configuration via ansible}
+
+    Puisque notre tunnel peut-être lancé simplement depuis le terminal, il 
+    semble tout à fait possible de le lancer avec \verb+ansible+. Cependant pour
+    pouvoir faire cela, il nous faut pouvoir lancer le tunnel en tâche de fond 
+    afin que celui-ci ne soit pas interrompu lors de la fin de la configuration
+    et à la fermeture du shell. Sur un système \verb+GNU/Linux+, on peut 
+    utiliser la commande \verb+nohup+ qui permet de faire cela. \\
+
+    Lorsque l'on utilise cette commande dans \verb+ansible+, on est confronté à 
+    des erreurs qui sont générées par la sortie standard et la sortie d'erreur.
+    Pour les éviter on redirige la sortie d'erreur vers la sortie standard et 
+    la sortie standard vers \verb+/dev/null+. \\
+
+    Une fois tout cela fait, lorsqu'on lance la configuration de \verb+VM1+
+    et \verb+VM3+ via ansible avec la commande \verb+ansible-playbook /vagrant/config.yml+, 
+    le tunnel se lance. On peut le vérifier en faisant \verb+ip a+ sur l'une
+    des deux extrémités du tunnel, \verb+tun0+ est encore affichée, ce qui 
+    signifie que le tunnel tourne encore. Pour vérifier qu'il fonctionne 
+    correctement on effectue à nouveau un ping depuis \verb+VM1-6+ vers 
+    \verb+VM3-6+ avec succès.
+
 \end{document}
 
 /
