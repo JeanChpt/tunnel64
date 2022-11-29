@@ -4,6 +4,7 @@
 \usepackage[scale=.8]{geometry}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{setspace}
 
 \title{Tunnel IPv6 sur IPv4}
 
@@ -11,6 +12,7 @@
 \date{}
 
 \begin{document}
+    \begin{spacing}{1.1}
     \maketitle
     \newpage
     \tableofcontents
@@ -105,14 +107,14 @@
     virtuelle \verb+tun0+ dont nous disposons du descripteur de fichier, on 
     peut s'intéresser à la récupération des informations depuis \verb+tun0+. 
     On complète donc notre bibliothèque \verb+iftun+ avec une nouvelle fonction
-    transfert qui permettra de transférer les données lues sur un descripteur 
-    de fichier source vers un descripteur de fichier destination. \\
+    \verb+transfert()+ qui permettra de transférer les données lues sur un 
+    descripteur de fichier source vers un descripteur de fichier destination. \\
 
     On effectue donc le test de cette fonction avec comme descripteur de 
     fichier source celui retourné par la création de l'interface \verb+tun0+ et
     comme descripteur de fichier destination 1 (qui correspond à la 
     sortie standard). On effectue à nouveau les pings réalisés précédemment
-    depuis \verb+VM1-6+. Au niveau du réseau rien ne change, Les captures sont 
+    depuis \verb+VM1-6+. Au niveau du réseau rien ne change, les captures sont 
     identiques. Cependant, on observe les paquets entrants sur \verb+tun0+ 
     s'afficher dans le terminal. Ceux-ci étant en binaire, on les rends plus 
     lisibles en filtrant l'affichage avec \verb+hexdump+ afin de rendre cela 
@@ -121,18 +123,22 @@
     Différentes options sont disponibles lorsque l'on crée l'interface 
     virtuelle. On peut utiliser les flags suivants: \verb+IFF_TUN+, 
     \verb+IFF_TAP+ et \verb+IFF_NO_PI+. \verb+IFF_TUN+ est celui que l'on 
-    utilise car il permet de supprimer les en-têtes Ethernet afin de ne garder
-    que le datagramme IP. \verb+IFF_NO_PI+ permet de retirer les 4 octets 
-    concernant la version du protocole de couche IP. Le flag \verb+IFF_NO_PI+ 
-    peut s'ajouter en plus du flag \verb+IFF_TUN+, les flags sont cumulables.
+    utilise car il permet de supprimer les en-têtes \verb+ethernet+ afin de ne 
+    garder que le datagramme \verb+IP+. \verb+IFF_NO_PI+ permet de retirer les 
+    4 octets concernant la version du protocole de couche \verb+IP+. Le flag 
+    \verb+IFF_NO_PI+ peut s'ajouter en plus du flag \verb+IFF_TUN+, les flags 
+    sont cumulables.
 
     \section{Un tunnel simple pour IPv6}
 
-    Afin de faire communiquer \verb+VM1+ et \verb+VM3+ qui sont reliés par le 
-    biais de \verb+VM2+ en \verb+IPv4+, on utilisera la connexion par socket à
-    l'image d'un client et d'un serveur. Pour cela on crée une nouvelle 
-    bibliothèque \verb+extremite+ qui contiendra les fonctions nécessaires à
-    l'envoi et à la réception des datagrammes.
+    $$\includegraphics[scale=0.6]{images/tunnel64.png}$$ \\
+
+    On s'intéresse à présent à la création du tunnel \verb+IPv6+ sur \verb+IPv4+
+    sur le modèle du schéma précédent. Afin de faire communiquer \verb+VM1+ et 
+    \verb+VM3+ qui sont reliés par le biais de \verb+VM2+ en \verb+IPv4+, on 
+    utilisera la connexion par socket à l'image d'un client et d'un serveur. Pour 
+    cela on crée une nouvelle bibliothèque \verb+extremite+ qui contiendra les 
+    fonctions nécessaires à l'envoi et à la réception des datagrammes.
 
     \subsection{Redirection du traffic entrant}
 
@@ -149,11 +155,11 @@
     En plus de la fonction \verb+ext_in()+, il nous faut aussi une fonction 
     \verb+ext_out()+ qui sera chargée du rôle de serveur et qui écoutera donc
     sur sa socket afin de rediriger dans un premier temps vers la sortie 
-    standard (descripteur de fichier 1) afin de vérifier que tout fonctionne 
+    standard (descripteur de fichier \verb+1+) afin de vérifier que tout fonctionne 
     correctement. La redirection est ici aussi effectuée à l'aide de la 
     fonction transfert de la bibliothèque \verb+iftun+. À terme le transfert ne
     s'effectuera plus vers la sortie standard mais bien sur le descripteur de 
-    fichier de \verb+tun0+ afin de réinjecter notre datagramme \verb+IPv6+ dans
+    fichier de \verb+tun0+ afin de réinjecter notre datagramme \verb+IPv6+ sur
     le réseau. \\
 
     Lorque tout est mis en place, c'est à dire que le programme de test est
@@ -161,7 +167,7 @@
     peut effectuer notre \verb+ping -6+ habituel depuis \verb+VM1-6+ vers 
     l'adresse \verb+fc00:1234:ffff::10+. Si l'on se place ensuite sur 
     \verb+VM3+, on voit l'ensemble des paquets arriver depuis le tunnel 
-    s'afficher sur la sortie standard.
+    s'afficher sur la sortie standard donc dans le terminal.
 
     \subsection{Redirection du traffic sortant}
 
@@ -171,8 +177,8 @@
     datagramme \verb+IPv6+ transporté par le tunnel sur \verb+IPv4+ dans le 
     réseau \verb+IPv6+. Pour cela il suffit de modifier la fonction 
     \verb+ext_out()+ de la bibliothèque \verb+extremite+ en effectuant un 
-    transfert non plus vers 1 (sortie standard) mais vers le descripteur de
-    fichier retourné par \verb+tun0+. \\
+    transfert non plus vers \verb+1+ (sortie standard) mais vers le descripteur 
+    de fichier retourné par la création de \verb+tun0+. \\
 
     De cette manière les datagrammes \verb+IPv6+ qui étaient transportés par un 
     datagramme \verb+IPv4+ dans le tunnel sont réintégrés dans un réseau 
@@ -183,21 +189,26 @@
     socket d'écoute de la sortie du tunnel sur \verb+VM3+. On réalise cela à 
     l'aide de la commande \verb+nc 172.16.2.163 123 < datagramme-v6.bin+. On 
     se place sur VM3 et on observe le paquet entrant être redirigé vers 
-    \verb+tun0+ puis arriver sur \verb+VM3-6+.
+    \verb+tun0+ puis arriver sur \verb+VM3-6+. Pour éditer notre fichier 
+    binaire \verb+datagramme-v6.bin+, on utilise \verb+hexedit+. Si l'on 
+    modifie le datagramme \verb+IPv6+, il est nécessaire de recalculer le 
+    \verb+CRC+ sinon le datagramme sera considéré comme corrompu et abandonné
+    par le prochain routeur. Pour recalculer le \verb+CRC+, on peut utiliser un 
+    outil clés en main ou bien le faire à la main.
 
     \subsection{Intégration finale du tunnel}
 
     Maintenant que notre datagramme \verb+IPv6+ arrive à rejoindre notre second 
     réseau \verb+IPv6+, on cherche à faire fonctionner notre tunnel dans les 
-    sens. Pour cela, il nous faut lancer les fonctions \verb+ext_in()+ et 
+    deux sens. Pour cela, il nous faut lancer les fonctions \verb+ext_in()+ et 
     \verb+ext_out()+ à chaque extrémité du tunnel. Afin que cela soit possible
     on décide de passer l'adresse \verb+IPv4+ de la sortie du tunnel en 
     paramètres de la fonction \verb+ext_in()+. Avec une modification de notre 
     fonction principale \verb+main()+, on lui permet de lancer le tunnel soit 
-    sur \verb+VM1+ soit sur \verb+VM2+. \\
+    sur \verb+VM1+ soit sur \verb+VM3+. \\
 
     Pour lancer à la fois la fonction \verb+ext_in()+ et la fonction 
-    \verb+ext_out()+, on utilisera la librairie C \verb+pthreads+ qui permet 
+    \verb+ext_out()+, on utilisera la librairie \verb+C pthreads+ qui permet 
     de lancer des threads d'exécution assez simplement au lieu d'utiliser les
     processus système avec des appels à \verb+fork()+. Pour pouvoir lancer ces
     threads depuis le main, on aura besoin d'une bibliothèque supplémentaire 
@@ -206,12 +217,12 @@
     On crée aussi une structure de donnée permettant de passer les arguments
     nécessaires au lancement du tunnel à nos fonctions. \\
 
-    Après avoir lancé le tunnel sur \verb+VM1+ et sur \verb+VM2+, on effectue 
+    Après avoir lancé le tunnel sur \verb+VM1+ et sur \verb+VM3+, on effectue 
     des pings entre \verb+VM1-6+ et \verb+VM3-6+. Pour vérifier que tout est
     bon on effectue une capture wireshark du traffic circulant sur \verb+VM2+
     en \verb+IPv4+. On effectue une seconde capture  sur \verb+VM3+ en 
     \verb+IPv6+. D'après l'analyse de ces captures situées dans le répertoire 
-    \verb+docs+, tout est fonctionnel.
+    \verb+docs/wireshark+, tout est fonctionnel.
 
     \subsection{Mise en place du tunnel entre VM1 et VM3: Schémas}
 
@@ -238,8 +249,8 @@
     de nos appels à \verb+ext_in()+ et \verb+ext_out()+. Une fois cela fait, 
     on peut essayer de démarrer le tunnel sur \verb+VM1+ et \verb+VM3+ avec la 
     commande \verb+./bin/tunnel64+ depuis le répertoire \verb+/mnt/partage/tunnel64+.
-    Le tunnel se lance correctementet les pings entre \verb+VM1-6+ et \verb+VM3-6+ 
-    sont fonctionnels.
+    Le tunnel se lance correctement et les pings entre \verb+VM1-6+ et \verb+VM3-6+ 
+    sont fonctionnels (dans les deux sens).
 
     \section{Validation fonctionnelle}
 
@@ -247,12 +258,12 @@
 
     Sur chaque machine de notre réseau (\verb+VM1+, \verb+VM2+, \verb+VM2+, 
     \verb+VM1-6+ et \verb+VM3-6+) on récupère les paramètres réseaux 
-    significatifs avec les commandes \verb+ip a+ et \verb+ip r+. L'ensemble 
-    des résultats est cohérent avec ce que nous attendions. Si besoin est de
-    les consulter, l'ensemble des fichiers texte contenant les résultats des 
-    commandes se trouvent dans le répertoire \verb+docs/configs+. Les résultats 
-    sont aussi disponibles en simples captures d'écran dans le répertoire 
-    \verb+docs/images/configs+.
+    significatifs avec les commandes \verb+ip a+ et \verb+ip r+ (ou \verb+ip -6 r+
+    pour les routes \verb+IPv6+). L'ensemble des résultats est cohérent avec ce 
+    que nous attendions. Si besoin est de les consulter, l'ensemble des fichiers 
+    au format texte contenant les résultats des commandes se trouvent dans le 
+    répertoire \verb+docs/configs+. Les résultats sont aussi disponibles en simples 
+    captures d'écran dans le répertoire \verb+docs/images/configs+.
 
     \subsection{Couche 3}
 
@@ -269,7 +280,7 @@
 
     Pour tester un peu plus en profondeur le fonctionnement du tunnel, on essaye
     de se connecter au service \verb+echo+ de \verb+VM3-6+ depuis \verb+VM1-6+.
-    Pour cela on utilise la commande telnet suivante : 
+    Pour cela on utilise la commande \verb+telnet+ suivante : 
     \verb+telnet fc00:1234:4::36 echo+. La connexion se déroule sans problème 
     et le service \verb+echo+ fonctionne correctement.
 
@@ -277,8 +288,8 @@
 
     On s'intéresse maintenant à la performance de notre tunnel. Pour cela, nous 
     allons utiliser l'utilitaire \verb+iperf3+. On commence par le lancer en
-    mode serveur sur \verb+VM3-6+ puis on essaye avec différentes tailles de 
-    tampon depuis \verb+VM1-6+. \\
+    mode serveur sur \verb+VM3-6+ avec la commande \verb+iperf3 -s+ puis on essaye
+    avec différentes tailles de tampon depuis \verb+VM1-6+. \\
 
     Peu importe la taille de tampon envoyé avec \verb+iperf3+, le débit est en 
     moyenne au dessus d'1Gb/s. Il nous est cependant impossible de déduire 
@@ -309,6 +320,6 @@
     correctement on effectue à nouveau un ping depuis \verb+VM1-6+ vers 
     \verb+VM3-6+ avec succès.
 
-\end{document}
+    \end{spacing}
 
-/
+\end{document}
