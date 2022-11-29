@@ -29,7 +29,8 @@
     la nécessité. (Cela n'est pas nécessaire pour le bon fonctionnement mais ça
     permet de faire un peu de propre). On supprime de plus les routes devenues 
     obsolètes permettant auparavant le passage par \verb+VM2-6+ pour la communication 
-    en \verb+IPv6+.
+    en \verb+IPv6+. Il s'agit là d'une étape obligatoire pour éviter une perte 
+    de paquet par la suite.
 
     \section{Interface virtuelle}
     Une fois notre configuration terminée avec ansible, on s'intéresse 
@@ -66,11 +67,11 @@
     \verb+VM3-6+, elles ne pourront plus passer par \verb+VM2-6+. \\
 
     On crée donc un script \verb+configure_tun.sh+ qui contiendra les commandes
-    de configuration de l'interface virtuelle. suivantes.
-    \verb+ip address add fc00:1234:ffff::1/64 dev tun0+ pour lui ajouter 
+    de configuration de l'interface virtuelle suivantes.
+    \verb+ip address add fc00:1234:ffff::1/32 dev tun0+ pour lui ajouter 
     l'adresse \verb+IP+. Mais aussi la commande \verb+ip link set dev tun0 up+
     afin d'activer l'interface qui était pour le moment en état \verb+down+ 
-    après sa création \\
+    après sa création. \\
 
     Afin de tester notre configuration et après avoir lancé notre programme de 
     test sur \verb+VM1+, on tente d'effectuer un \verb+ping -6+ de \verb+VM1-6+
