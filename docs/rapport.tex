@@ -91,8 +91,10 @@
     vers l'addresse \verb+IPv6+ suivante : \\ \verb+fc00:1234:ffff::10+. Cette 
     fois-ci le ping ne reçoit pas de réponse mais en effectuant une analyse de 
     paquets avec wireshark sur \verb+VM1+, on se rend compte que les paquets 
-    sont transmis depuis l'interface \verb+eth2+ de \verb+VM1+ vers \verb+tun0+
-    .Le ping ne reçoit ainsi pas de réponse car pour le moment les paquets 
+    sont transmis depuis l'interface \verb+eth2+ de \verb+VM1+ vers \verb+tun0+.
+    Les paquets sont en réalité routés par \verb+VM1+ vers \verb+tun0+ grâce à 
+    la route ajoutée lors de la création et configuration de l'interface virtuelle.
+    Le ping ne reçoit cependant pas de réponse car pour le moment les paquets 
     injectés dans \verb+tun0+ ne sont pas traités. Attention car pour cette 
     partie il faut bien penser à ajouter le drapeau de routage \verb+IPv6+ sur 
     \verb+VM1+ (et par symétrie sur \verb+VM3+) sinon la transmission entre 
