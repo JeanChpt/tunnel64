@@ -5,18 +5,20 @@
 ```
 Structure du projet
 ├── doc
+│   ├── configs           # résultats des configurations au format .txt (ip a et ip r)
 │   ├── images           # images et captures d'écrans
+│   ├── wireshark        # captures wireshark
 │   └── rapport.pdf      # rapport du projet
 ├── partage              # dossier partagé entre les VMs
 │   └── tunnel64         # répertoire contenant l'application
 │       ├── inc          # fichiers d'en-têtes
 │       ├── src          # fichiers sources
 │       ├── scripts      # scripts de configuration
-│       └── Makefile     # pour compiler le projet
+│       └── Makefile      # pour compiler le projet
 │       
 ├── VM1
-│   ├── Vagrantfile      # fichier propre à vagrant
-│   ├── config.yml       # fichier de configuration ansible
+│   ├── Vagrantfile       # fichier propre à vagrant
+│   ├── config.yml        # fichier de configuration ansible
 │   └── tunnel64.conf    # fichier de configuration du tunnel
 ├── VM2
 ├── VM3
