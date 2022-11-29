@@ -276,7 +276,12 @@
     On s'intéresse maintenant à la performance de notre tunnel. Pour cela, nous 
     allons utiliser l'utilitaire \verb+iperf3+. On commence par le lancer en
     mode serveur sur \verb+VM3-6+ puis on essaye avec différentes tailles de 
-    tampon depuis \verb+VM1-6+.
+    tampon depuis \verb+VM1-6+. \\
+
+    Peu importe la taille de tampon envoyé avec \verb+iperf3+, le débit est en 
+    moyenne au dessus d'1Gb/s. Il nous est cependant impossible de déduire 
+    une tendance en fonction de la taille du tampon en entrée car les valeurs 
+    varient énormément sans corrélation avec celle-ci.
 
     \section{Améliorations}
 
